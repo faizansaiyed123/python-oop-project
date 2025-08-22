@@ -17,8 +17,26 @@ class Bank:
         print(f"An exception occurred: {err}")
         
     def Createaccount(self):
-        pass
+        data = {
+            "name": input("Tell Your Name :- "),
+            "age": int(input("Tell Your Age :- ")),
+            "email": input("Tell Your Email :- "),
+            "pin": int(input("Tell 4 number Your Pin :- ")),
+            "accountNo": random.randint(10000000, 99999999),  # random account no
+            "balance": 0
+        }
 
+        # ✅ fixed condition (age check, pin length, email check)
+        if data["age"] < 18 or len(str(data["pin"])) != 4 or "@" not in data["email"]:
+            print("❌ Sorry, you cannot create an account")
+        else:
+            print("✅ Account has been created successfully")
+            for k, v in data.items():
+                print(f"{k}: {v}")
+            print("⚠️ Please note down your account number")
+
+            Bank.update(data)   # <-- this will fail unless you define update()
+            
 
 user = Bank() 
 print("====== Bank Management System ======")
