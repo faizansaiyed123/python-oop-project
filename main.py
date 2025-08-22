@@ -71,6 +71,29 @@ class Bank:
                 userdata['balance'] += amount
                 Bank.__update()
                 print("✅ Amount deposited successfully")
+
+    def withdrawmoney(self):
+        accnumber = input("Please tell your account number :- ")
+        pin = int(input("Please tell your pin :- "))
+
+        userdata = None
+        for i in Bank.data:
+            if i['accountNo'] == accnumber and i['pin'] == pin:
+                userdata = i
+                break
+
+        if userdata is None:
+            print("❌ Sorry, no data found")
+        else:
+            amount = int(input("How much you want to withdraw :- "))
+            if amount <= 0:
+                print("❌ Invalid amount")
+            elif amount > userdata['balance']:
+                print("❌ Insufficient balance")
+            else:
+                userdata['balance'] -= amount
+                Bank.__update()
+                print(f"✅ Withdrawal successful. Remaining balance: {userdata['balance']}")
             
 
 user = Bank() 
@@ -89,3 +112,6 @@ if check == 1:
 
 if check == 2:
     user.depositmoney()
+
+if check == 3:
+    user.withdrawmoney()
