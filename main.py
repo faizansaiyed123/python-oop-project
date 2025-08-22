@@ -1,0 +1,7 @@
+print("====== Bank Management System ======")
+print("1. Create Account")
+print("2. Deposit Money")
+print("3. Withdraw Money")
+print("4. Account Details")
+print("6. Delete Account")
+print("====================================")
