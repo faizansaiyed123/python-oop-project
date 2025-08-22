@@ -94,6 +94,23 @@ class Bank:
                 userdata['balance'] -= amount
                 Bank.__update()
                 print(f"✅ Withdrawal successful. Remaining balance: {userdata['balance']}")
+
+    def accountdetails(self):
+        accnumber = input("Please tell your account number :- ")
+        pin = int(input("Please tell your pin :- "))
+
+        userdata = None
+        for i in Bank.data:
+            if i['accountNo'] == accnumber and i['pin'] == pin:
+                userdata = i
+                break
+
+        if userdata is None:
+            print("❌ Sorry, no data found")
+        else:
+            print("📌 Account Details:")
+            for k, v in userdata.items():
+                print(f"{k}: {v}")
             
 
 user = Bank() 
@@ -115,3 +132,6 @@ if check == 2:
 
 if check == 3:
     user.withdrawmoney()
+
+if check == 4:
+    user.accountdetails()
