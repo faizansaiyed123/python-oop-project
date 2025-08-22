@@ -25,12 +25,6 @@ JSON (for local data storage)
 
 OOP Principles
 
-📂 Project Structure
-Bank-Management-System/
-│── data.json        # Database (stores account details)
-│── main.py          # Main program file
-│── README.md        # Project documentation
-
 🚀 How to Run
 
 Clone the repository:
