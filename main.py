@@ -41,12 +41,12 @@ class Bank:
         }
 
         if info["age"] < 18 or len(str(info["pin"])) != 4 or "@" not in info["email"]:
-            print("❌ Sorry, you cannot create an account")
+            print("Sorry, you cannot create an account")
         else:
-            print("✅ Account has been created successfully")
+            print("Account has been created successfully")
             for k, v in info.items():
                 print(f"{k}: {v}")
-            print("⚠️ Please note down your account number")
+            print("Please note down your account number")
             
             Bank.data.append(info)
             Bank.__update()
@@ -62,15 +62,15 @@ class Bank:
                 break
 
         if userdata is None:
-            print("❌ Sorry, no data found")
+            print("Sorry, no data found")
         else:
             amount = int(input("How much you want to deposit :- "))
             if amount > 10000 or amount <= 0:
-                print("❌ Sorry, this amount is invalid. You can deposit up to 10,000 and above 0.")
+                print("Sorry, this amount is invalid. You can deposit up to 10,000 and above 0.")
             else:
                 userdata['balance'] += amount
                 Bank.__update()
-                print("✅ Amount deposited successfully")
+                print("Amount deposited successfully")
 
     def withdrawmoney(self):
         accnumber = input("Please tell your account number :- ")
@@ -83,17 +83,17 @@ class Bank:
                 break
 
         if userdata is None:
-            print("❌ Sorry, no data found")
+            print("Sorry, no data found")
         else:
             amount = int(input("How much you want to withdraw :- "))
             if amount <= 0:
-                print("❌ Invalid amount")
+                print("Invalid amount")
             elif amount > userdata['balance']:
-                print("❌ Insufficient balance")
+                print("Insufficient balance")
             else:
                 userdata['balance'] -= amount
                 Bank.__update()
-                print(f"✅ Withdrawal successful. Remaining balance: {userdata['balance']}")
+                print(f"Withdrawal successful. Remaining balance: {userdata['balance']}")
 
     def accountdetails(self):
         accnumber = input("Please tell your account number :- ")
@@ -106,9 +106,9 @@ class Bank:
                 break
 
         if userdata is None:
-            print("❌ Sorry, no data found")
+            print("Sorry, no data found")
         else:
-            print("📌 Account Details:")
+            print("Account Details:")
             for k, v in userdata.items():
                 print(f"{k}: {v}")
 
@@ -120,9 +120,9 @@ class Bank:
             if i['accountNo'] == accnumber and i['pin'] == pin:
                 Bank.data.remove(i)
                 Bank.__update()
-                print("✅ Account deleted successfully")
+                print("Account deleted successfully")
                 return
-        print("❌ Sorry, no account found to delete")
+        print("Sorry, no account found to delete")
             
 
 user = Bank() 
