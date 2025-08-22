@@ -111,6 +111,18 @@ class Bank:
             print("📌 Account Details:")
             for k, v in userdata.items():
                 print(f"{k}: {v}")
+
+    def deleteaccount(self):
+        accnumber = input("Please tell your account number :- ")
+        pin = int(input("Please tell your pin :- "))
+
+        for i in Bank.data:
+            if i['accountNo'] == accnumber and i['pin'] == pin:
+                Bank.data.remove(i)
+                Bank.__update()
+                print("✅ Account deleted successfully")
+                return
+        print("❌ Sorry, no account found to delete")
             
 
 user = Bank() 
@@ -119,7 +131,7 @@ print("1. Create Account")
 print("2. Deposit Money")
 print("3. Withdraw Money")
 print("4. Account Details")
-print("6. Delete Account")
+print("5. Delete Account")
 print("====================================")
 
 check = int(input("Tell your response: "))
@@ -135,3 +147,6 @@ if check == 3:
 
 if check == 4:
     user.accountdetails()
+
+if check == 5:
+    user.deleteaccount()
